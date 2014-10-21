@@ -5,12 +5,12 @@ var pigLatin = function (string) {
     for (var i = 0; i < words.length; i++) {
         var word = words[i];
         word = word.toLowerCase();
-        var vowels = /\b[aeiou]/;
+        var vowels = /\b[aeiou]/;        
         if (word.match(vowels)) {
             result += word + "ay";
         } else {
 
-            if ((word.charAt(0) === "q") && (word.charAt(1) === "u")) {
+            if ((word.charAt(0) === "q") && (word.charAt(1) === "u")){
                 result += word.slice(2) + word.slice(0, 2) + "ay";
             } else {
 
@@ -18,14 +18,15 @@ var pigLatin = function (string) {
 
                     if ((word.slice(1).charAt(0) === "q") && (word.slice(2).charAt(0) === "u")) {
                         result += word.slice(3) + word.charAt(0) + word.slice(1, 3) + "ay";
-                        break;
-                    };
-
-                    if (!word.slice(2).match(vowels)) {
-                        result += word.slice(3) + word.charAt(0) + word.slice(1).charAt(0) + word.slice(2).charAt(0) + "ay";
                     } else {
-                        result += word.slice(2) + word.charAt(0) + word.slice(1).charAt(0) + "ay";
-                    };
+
+
+                        if (!word.slice(2).match(vowels)) {
+                            result += word.slice(3) + word.charAt(0) + word.slice(1).charAt(0) + word.slice(2).charAt(0) + "ay ";
+                        } else {
+                            result += word.slice(2) + word.charAt(0) + word.slice(1).charAt(0) + "ay";
+                        };
+                    }
 
                 } else {
                     result += word.slice(1) + word.charAt(0) + "ay";
